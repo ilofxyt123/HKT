@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="font-size:100px">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no"/>
@@ -21,12 +21,55 @@
     </style>
 </head>
 <body>
+<div class="container P_bg">
+    <img src="images/p1_img_0.jpg" class="bg-pic">
+</div>
+<style>
+    .P_bg{z-index:2;}
+        .bg-pic{}
+</style>
+<div class="container P_loading">
+    <img src="images/p1_img_3.png" class="load-pic">
+    <div class="load-box">
+        <div class="bar-container">
+            <img src="images/p1_img_2_1.png" class="bar">
+        </div>
+        <span class="num">100%</span>
+    </div>
 
+    <img src="images/p1_img_1.png" class="ori-tip">
+
+    <img src="images/p1_img_4.png" class="play-btn">
+</div>
+
+<style>
+    .P_loading{}
+        .load-pic{width:3.36rem;left:50%;margin-left:-1.68rem;top:1.6rem;}
+        .load-box{position:absolute;height:8.65%;width:68.75%;left:50%;margin-left:-34%;top:4.3rem;}
+            .bar-container{position:absolute;width:100%;background-image:url("images/p1_img_2.png");background-repeat: no-repeat;overflow: hidden;background-size:100%;}
+                .bar{width:100%;position: relative;}
+            .num{position: absolute;width:100%;bottom:0;text-align: center;color:white;font-size:0.3rem;}
+        .ori-tip{width:100%;top:5.67rem;}
+        .play-btn{width:0.94rem;left:50%;margin-left:-0.47rem;top:8.2rem;}
+</style>
+<div class="container P_video none">
+    <video src="video/video.mp4" id="video" width="100%" x-webkit-airplay="true" webkit-playsinline playsinline airplay="allow" x5-video-player-type="h5" class="iosPreload"></video>
+</div>
 <div class="hp">
     <div class="hp_box">
         <img src="images/phone.png" class="phone">
         <img src="images/weile.png" class="hp_tip">
     </div>
 </div>
+
+<!--<audio id="bgm" src="music.mp3" preload="auto" loop="true" class="iosPreload"></audio>-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+    var js;
+    js = '<' + 'script ' + 'src=' + "js/index.js?v" + Math.random() + '>' + '</' + 'script' + '>'
+    document.write(js)
+</script>
 </body>
 </html>
