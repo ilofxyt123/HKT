@@ -26,14 +26,14 @@ img{position: absolute;}
         margin-left:-20%;
 
     }
-        .phone {
+        .hp .phone {
             width:50%;
             position:absolute;
             left:50%;
             margin-left:-25%;
             top:33%;
         }
-        .hp_tip{
+        .hp .hp_tip{
             width:100%;
             position:absolute;
             top:70%;
