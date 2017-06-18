@@ -223,3 +223,41 @@
     -webkit-animation:ani-bgmRotate 1s linear 0s infinite forwards;
     animation:ani-bgmRotate 1s linear 0s infinite forwards;
 }
+
+@-webkit-keyframes ani-float {
+
+    50% {
+        -webkit-transform:translateY(0.2rem);
+    }
+}
+@keyframes ani-float {
+    50% {
+        -webkit-transform:translateY(0.2rem);
+    }
+}
+
+.ani-float{
+    -webkit-animation:ani-float 6s linear 0s infinite forwards;
+    animation:ani-float 6s linear 0s infinite forwards;
+}
+
+@-webkit-keyframes ani-scale {
+
+    100% {
+        -webkit-transform:scale(1);
+        opacity:1
+    }
+}
+@keyframes ani-scale {
+    100% {
+        -webkit-transform:scale(1);
+        opacity:1
+    }
+}
+
+.ani-scale{
+    -webkit-animation:ani-scale 0.3s linear 0s 1 forwards;
+    animation:ani-scale 0.3s linear 0s 1 forwards;
+}
+
+

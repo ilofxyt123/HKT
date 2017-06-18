@@ -1,7 +1,9 @@
 /**
  * Created by Administrator on 2017/6/14.
  */
+
 (function(win){
+
     $.fn.extend({
         fiHandler:function(e){
             e.stopPropagation();
@@ -76,6 +78,7 @@
                         var num = Math.ceil(haveLoaded / ImageURL.length* 100);
                         if(rd){
                             $(".num").html("- "+num + "% -");
+                            imgBar.css("transform","translateX("+num+"%)");
                         }
                         if (haveLoaded == ImageURL.length && callback) {
                             setTimeout(callback, 500);
@@ -150,10 +153,10 @@
                 this.mutedEnd = true;
                 return;
             }
-            if(!Utils.browser("iPhone")){
-                _self.mutedEnd = true;
-                return;
-            }
+            // if(!Utils.browser("iPhone")){
+            //     _self.mutedEnd = true;
+            //     return;
+            // }
             document.addEventListener("WeixinJSBridgeReady",function(){
                 var $media = $(".iosPreload");
                 $.each($media,function(index,value){
@@ -194,6 +197,7 @@
                 },20)
             }
     };
+    var imgBar = $(Utils.g("bar"));
     Media.WxMediaInit();
 
     var main =  new function(){
@@ -201,9 +205,142 @@
             id:"video",
             currentTime:0,
             isPlay:false,
-            obj:document.getElementById("video")
+            obj:document.getElementById("video"),
+            isEnd:false
         };
         this.ios = Utils.browser("ios");
+
+        this.picUrl = "images/";//图片路径
+        this.ImageList = [
+            this.picUrl+"inputbg.png",
+            this.picUrl+"p1_img_0.jpg",
+            this.picUrl+"p1_img_1.png",
+            this.picUrl+"p1_img_2.png",
+            this.picUrl+"p1_img_2_1.png",
+            this.picUrl+"p1_img_3.png",
+            this.picUrl+"p1_img_4.png",
+            this.picUrl+"p2_img_1.png",
+            this.picUrl+"p3_img_1.jpg",
+            this.picUrl+"p3_img_1_1.jpg",
+            this.picUrl+"p3_img_2.jpg",
+            this.picUrl+"p3_img_2.png",
+            this.picUrl+"p3_img_3.png",
+            this.picUrl+"p3_img_3_1.png",
+            this.picUrl+"p3_img_3_2.png",
+            this.picUrl+"p3_img_4.png",
+            this.picUrl+"p3_img_5.png",
+            this.picUrl+"p3_img_6.png",
+            this.picUrl+"p3_img_7.png",
+            this.picUrl+"p3_img_8.png",
+            this.picUrl+"p4_img_0.png",
+            this.picUrl+"p4_img_1.png",
+            this.picUrl+"p4_img_2.png",
+            this.picUrl+"p4_img_3.png",
+            this.picUrl+"p4_img_5.png",
+            this.picUrl+"p4_img_6.png",
+            this.picUrl+"p4_img_7.png",
+            this.picUrl+"p4_img_8.png",
+            this.picUrl+"p4_img_9.png",
+            this.picUrl+"p5_img_1.png",
+            this.picUrl+"p5_img_3.png",
+            this.picUrl+"p5_img_4.png",
+            this.picUrl+"p5_img_5.png",
+            this.picUrl+"p6_img_0.png",
+            this.picUrl+"p6_img_1.png",
+            this.picUrl+"p6_img_2.png",
+            this.picUrl+"p6_img_3.png",
+            this.picUrl+"p6_img_4.png",
+            this.picUrl+"p6_img_5.png",
+            this.picUrl+"p6_img_6.png",
+            this.picUrl+"p7_img_2.png",
+            this.picUrl+"p8_img_1.png",
+            this.picUrl+"p8_img_2.png",
+            this.picUrl+"phone.png",
+            this.picUrl+"submitTip.png",
+            this.picUrl+"ticket480.png",
+            this.picUrl+"ticket1380.png",
+            this.picUrl+"ticket2500.png",
+            this.picUrl+"weile.png",
+
+        ];
+        this.barPercent = (window.screen.height-window.innerHeight)/window.screen.height;
+        this.w = window.screen.width;
+        this.h = window.screen.height;
+        this.landscape = {
+            z:{
+                w:this.w,
+                h:this.h*(1-this.barPercent)
+            },
+            h:{
+                w:this.h,
+                h:this.w*(1-this.barPercent)
+            }
+        };
+        this.bgm ={
+            obj:document.getElementById("bgm"),
+            id:"bgm",
+            isPlay:false,
+            // button:$(".music-btn")
+        };
+
+        this.prizeType = undefined;
+        this.ticketType = undefined;
+        this.prizeNumber = 3;
+
+        this.haveFill = false;
+
+        this.touch ={
+            ScrollObj:undefined,
+            isScroll:false,
+            limitUp:0,
+            limitDown:undefined,
+            overlimit:false,
+            StartY:0,
+            NewY:0,
+            addY:0,
+            scrollY:0,
+            touchAllow:true
+        };
+    };
+    main.limitNum = function(obj){//限制11位手机号
+        var value = $(obj).val();
+        var length = value.length;
+        //假设长度限制为10
+        if(length>11){
+            //截取前10个字符
+            value = value.substring(0,11);
+            $(obj).val(value);
+        }
+    };//限制手机号长度
+    main.scrollInit=function(selector){
+        this.touch.ScrollObj = $(selector);
+        this.touch.container = $(selector).parent();
+        this.touch.StartY = 0;
+        this.touch.NewY = 0;
+        this.touch.addY = 0;
+        this.touch.scrollY = 0;
+        this.touch.limitDown = this.touch.ScrollObj.height() < this.touch.container.height() ? 0 :(this.touch.container.height()-this.touch.ScrollObj.height());
+    };
+    main.init = function(){
+        this.prizeNumber = $("#prizeNumber").val();
+    };
+    main.start = function(){
+        this.bgm.obj.play()
+        Utils.preloadImage(this.ImageList,function(){
+            $(".ori-tip").fi();
+            // if(!main.ios){
+                $(".play-btn").fi();
+            // };
+
+            $("#video").css({
+                "transform-origin":"0 0 0",
+                "transform":"translate3d("+main.landscape.z.w+"px,0,0) rotateZ(90deg)",
+                "width":window.screen.height+"px",
+                "height":"",
+            });
+
+            $(window).on("orientationchange",main.oriHandle1);
+        },true)
     };
     main.top = function(){
         $(".top").removeClass("none");
@@ -211,8 +348,12 @@
     main.loadleave = function(){
         $(".P_loading").fo();
     };
-    main.p1 = function(){};
-    main.p1leave = function(){};
+    main.p1 = function(){
+        $(".P1").fi();
+    };
+    main.p1leave = function(){
+        $(".P1").fo();
+    };
     main.p2 = function(){};
     main.p2leave = function(){};
     main.p3 = function(){};
@@ -220,26 +361,62 @@
     main.pvideo = function(){
         $(".P_video").fi();
     };
-    main.pvideoleave = function(){};
+    main.pvideoleave = function(){
+        $(".P_video").fo(function(){
+            if(!window.orientation){
+                $(".bg-pic2").addClass("blur");
+            }
+        });
+    };
+    main.prize = function () {
+        if(this.prizeNumber == 0){
+            this.prizeType = undefined;
+            $(".noChance").removeClass("none");
+            return;
+        }
+        this.prizeNumber -= 1;
+        $(".times").html(this.prizeNumber);
+
+
+        setTimeout(function(){//回调
+            // main.prizeType = 1;//fun礼包
+            main.prizeType = 2;//券
+
+            if(main.prizeType == 2){
+                main.ticketType = 1;//480
+                // main.ticketType = 2;//1380
+                // main.ticketType = 3;//2500
+            }
+            main.p1leave();
+            main.presult();
+            main.touch.touchAllow =  true;
+        },500);
+
+
+    };
+    main.pmask = function(){
+        $(".P_mask").removeClass("none");
+    };
+    main.pmaskleave = function(){
+        $(".P_mask").fo();
+    };
+    main.presult = function(){
+        switch (main.prizeType){
+            case 1:
+                $(".prize1").removeClass("none");
+                break;
+            case 2:
+                $(".prize2").removeClass("none");
+                $(".prize2 .title"+main.ticketType).removeClass("none");
+                break;
+        }
+
+        $(".P_result").fi();
+    };
     main.addEvent = function(){
         document.body.ontouchmove = function(e){
             e.preventDefault();
         };
-        $(window).on("orientationchange",function(e){
-            if(window.orientation == 0 || window.orientation == 180 )
-            {
-                // $(".hp").hide();
-            }
-            else if(window.orientation == 90 || window.orientation == -90)
-            {
-                if(main.ios){
-                    main.loadleave();
-                    main.pvideo();
-                    main.V.obj.play();
-                }
-                // $(".hp").show();
-            }
-        });
 
         $(".play-btn").on("touchend",function(){
             main.loadleave();
@@ -247,12 +424,182 @@
             main.V.obj.play();
         });
 
+        $("#video").on({
+            play:function(){
+                main.V.isPlay = true;
+                console.log("视频开始播放");
+            },
+            ended:main.onVideoEnd
+        });
+
+        $(".p1-btn").on("touchend",function(){
+            if(!main.touch.touchAllow){return;}
+            main.touch.touchAllow = false;
+            main.prize();
+        });
+
+        $(".skip").on("touchend",function(){
+            $(".bg-pic1").addClass("none");
+            $(".bg-pic2").removeClass("none");
+            main.V.obj.pause();
+            main.V.obj.isPlay = false;
+            main.V.isEnd = true;
+            main.pvideoleave();
+
+            $(window).off("orientationchange",main.oriHandle1);
+            if(window.orientation != 0){
+                $(window).on("orientationchange",main.oriHandle2);
+            }
+            // main.p1();
+
+            $(".bg-pic2").on("webkitTransitionEnd",function(){
+                main.p1();
+            });
+        });
+
+
+
+
+        ////////noChance////////
+        $(".noChance .btn1").on("touchend",function(){
+
+        });
+        $(".noChance .btn2").on("touchend",function(){
+
+        });
+        $(".noChance .btn3").on("touchend",function(){
+
+        });
+        ////////noChance////////
+
+        ////////getPrize////////
+        $(".getPrize .btn1").on("touchend",function(){
+            $(".P_mask,.getPrize").addClass("none");
+        });
+        ////////getPrize////////
+
+        ////////success////////
+        $(".success .btn1").on("touchend",function(){
+
+            $(".P_mask").addClass("none");
+            $(".success").addClass("none");
+
+            $(".P_result").addClass("none");
+            $(".prize2").addClass("none");
+            $(".prize2 .title").addClass("none");
+
+
+            var clearInput = function(){
+                $("#name,#phone").val("");
+            };
+            clearInput();
+            main.p1();
+        });
+        $(".success .btn2").on("touchend",function(){});
+        $(".success .btn3").on("touchend",function(){});
+        ////////success////////
+
+        ////////prize2 券填信息////////
+        $(".submit").on("touchend",function(){
+            var number = $("#phone").val();
+            var name = $("#name").val();
+            var patt = /^1(3|4|5|7|8)\d{9}$/;
+
+            if(name == ""){alert("请输入姓名");return;};
+            if(!(patt.test(number))){alert("请输入正确的手机号!");return;};
+
+
+            $(".success").removeClass("none");
+            $(".P_mask").removeClass("none");
+        });
+
+        $("#phone").on("input",function(){
+            main.limitNum($(this)[0]);
+        });
+        ////////prize2 券填信息////////
+
+        ////////prize1礼包////////
+        $(".prize1 .btn1").on("touchend",function(){
+
+        });//领取大礼包
+        $(".prize1 .btn2").on("touchend",function(){
+            $(".getPrize").removeClass("none");
+            main.pmask();
+        });//再玩一次
+        ////////prize1礼包////////
+
+    };
+
+    main.onVideoEnd = function(){
+        main.V.isPlay = false;
+        main.V.isEnd = true;
+        $(".bg-pic1").addClass("none");
+        $(".bg-pic2").removeClass("none");
+        main.pvideoleave();
+
+        $(window).off("orientationchange",main.oriHandle1);
+        if(window.orientation != 0){
+            $(window).on("orientationchange",main.oriHandle2);
+        }
+        if(window.orientation == 0 || window.orientation == undefined){
+            $(".bg-pic2").on("webkitTransitionEnd",function(){
+                main.p1();
+            });
+            $(".bg-pic2").addClass("blur");
+        }
+    };
+    main.oriHandle1 = function(e){
+        if(main.V.isEnd == true){
+            $(window).off("orientationchange",main.oriHandle1).on("orientationchange",main.oriHandle2)
+            return;
+        };
+        if(window.orientation == 0 || window.orientation == 180 ) {//纵向
+            $("#video").css({
+                "transform-origin":"0 0 0",
+                "transform":"translate3d("+main.landscape.z.w+"px,0,0) rotateZ(90deg)",
+                "width":window.screen.height+"px",
+                "height":"",
+            });
+            $(".skip").css({
+                "width":"",
+                "right":"",
+                "bottom":"",
+                "transform":""
+            }).addClass("v");
+        }
+        else if(window.orientation == 90 || window.orientation == -90){//横向
+            $("#video").css({
+                "transform-origin":"",
+                "transform":"",
+                "width":window.screen.width+"px",
+                "height":"",
+            });
+            if(main.ios){
+                main.loadleave();
+                main.pvideo();
+                main.V.obj.play();
+            }
+            // $(".hp").show();
+            $(".skip").removeClass("v");
+            $(".skip").css({
+                "width":"0.2025rem",
+                "right":"0.45rem",
+                "bottom":"-0.1rem",
+                "transform":"rotateZ(-90deg)"
+            })
+        }
+    };
+    main.oriHandle2 = function(e){
+        if(window.orientation == 0 ) {
+            $(".bg-pic2").addClass("blur");
+            $(window).off("orientationchange",main.oriHandle2);
+        }
     };
     win.main = main;
 }(window));
 $(function(){
-    if(main.ios){
-        $(".play-btn").remove();
-    };
+    main.init();
     main.addEvent();
+    main.start();
+
 });

@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-<div class="top">
+<div class="top none">
     <img src="images/p3_img_5.png" class="rule-btn">
 </div>
 <style>
@@ -45,8 +45,8 @@
         .rule-btn{width:0.95rem;top:0.12rem;right:0.2rem;}
 </style>
 <div class="container P_bg">
-    <img src="images/p1_img_0.jpg" class="bg-pic bg-pic1 none">
-    <img src="images/p3_img_1.jpg" class="bg-pic bg-pic2">
+    <img src="images/p1_img_0.jpg" class="bg-pic bg-pic1">
+    <img src="images/p3_img_1.jpg" class="bg-pic bg-pic2 none">
 </div>
 <style>
     .P_bg{z-index:2;}
@@ -54,18 +54,18 @@
         .bg-pic2{transition:filter 2s 0.5s}
     .blur{filter:blur(10px);}
 </style>
-<div class="container P_loading none">
+<div class="container P_loading">
     <img src="images/p1_img_3.png" class="load-pic">
     <div class="load-box">
         <div class="bar-container">
-            <img src="images/p1_img_2_1.png" class="bar">
+            <img src="images/p1_img_2_1.png" class="bar" id="bar">
         </div>
         <span class="num">100%</span>
     </div>
 
-    <img src="images/p1_img_1.png" class="ori-tip">
+    <img src="images/p1_img_1.png" class="ori-tip none">
 
-    <img src="images/p1_img_4.png" class="play-btn">
+    <img src="images/p1_img_4.png" class="play-btn none">
 </div>
 
 <style>
@@ -73,23 +73,29 @@
         .load-pic{width:3.36rem;left:50%;margin-left:-1.68rem;top:1.6rem;}
         .load-box{position:absolute;height:8.65%;width:68.75%;left:50%;margin-left:-34%;top:4.3rem;}
             .bar-container{position:absolute;width:100%;background-image:url("images/p1_img_2.png");background-repeat: no-repeat;overflow: hidden;background-size:100%;}
-                .bar{width:100%;position: relative;}
+                .bar{width:100%;position: relative;left:-100%;}
             .num{position: absolute;width:100%;bottom:0;text-align: center;color:white;font-size:0.3rem;}
         .ori-tip{width:6.4rem;top:5.67rem;}
         .play-btn{width:0.94rem;left:50%;margin-left:-0.47rem;top:8.2rem;}
 </style>
 <div class="container P_video none">
-    <video src="video/video.mp4" id="video" width="100%" x-webkit-airplay="true" webkit-playsinline playsinline airplay="allow" x5-video-player-type="h5" class="iosPreload"></video>
+    <video src="video/video.mp4" id="video" x-webkit-airplay="true" webkit-playsinline playsinline airplay="allow" x5-video-player-type="h5" class="iosPreload"></video>
+    <img src="images/p2_img_1.png" class="skip v">
 </div>
+<style>
+    #video{position:absolute;left:0;top:0;width:100%;}
+    .skip{width:0.36rem;z-index:5;}
+        .v.skip{left:0.3rem;bottom:0.3rem;}
+</style>
 
 <div class="container P1 none">
     <img src="images/p3_img_2.png" class="p1-kuang">
 
     <img src="images/p3_img_4.png" class="p1-pic1">
 
-    <img src="images/p3_img_3.png" class="p1-pic2">
-    <img src="images/p3_img_3_1.png" class="p1-pic3">
-    <img src="images/p3_img_3_2.png" class="p1-pic4">
+    <img src="images/p3_img_3.png" class="p1-pic2 ani-float">
+    <img src="images/p3_img_3_1.png" class="p1-pic3 ani-float">
+    <img src="images/p3_img_3_2.png" class="p1-pic4 ani-float">
 
     <div class="p1-txt">
         <img src="images/p3_img_6.png" class="txt">
@@ -116,15 +122,15 @@
         .p1-txt2{width:2.23rem;left:50%;margin-left:-1.115rem;top:8.5rem;}
 </style>
 
-<div class="container P_result">
+<div class="container P_result none">
     <img src="images/p6_img_0.png" class="result-bg">
 
     <div class="prize1 none">
         <img src="images/p6_img_1.png" class="title">
 
-        <img src="images/p4_img_5.png" class="sprite1">
-        <img src="images/p4_img_6.png" class="sprite2">
-        <img src="images/p4_img_7.png" class="sprite3">
+        <img src="images/p4_img_5.png" class="sprite1 ani-float">
+        <img src="images/p4_img_6.png" class="sprite2 ani-float">
+        <img src="images/p4_img_7.png" class="sprite3 ani-float">
 
         <img src="images/p6_img_2.png" class="txt">
 
@@ -134,17 +140,17 @@
         </div>
 
     </div>
-    <div class="prize2">
+    <div class="prize2 none">
         <img src="images/ticket480.png" class="title title1 none">
         <img src="images/ticket1380.png" class="title title2 none">
-        <img src="images/ticket2500.png" class="title title3">
-        <img src="images/p4_img_5.png" class="sprite1">
-        <img src="images/p4_img_6.png" class="sprite2">
-        <img src="images/p4_img_7.png" class="sprite3">
+        <img src="images/ticket2500.png" class="title title3 none">
+        <img src="images/p4_img_5.png" class="sprite1 ani-float">
+        <img src="images/p4_img_6.png" class="sprite2 ani-float">
+        <img src="images/p4_img_7.png" class="sprite3 ani-float">
 
         <div class="inputBox">
-            <input class="phone" placeholder="电话">
-            <input class="name" placeholder="姓名">
+            <input id="phone" class="phone" placeholder="电话">
+            <input id="name" class="name" placeholder="姓名">
         </div>
 
         <img src="images/submitTip.png" class="fill-tip">
@@ -186,17 +192,17 @@
 </style>
 
 <div class="container P_mask none">
-    <img src="images/p4_img_0.png" class="mask-pic1">
+    <img src="images/p4_img_0.png" class="mask-pic1 opacity ani-scale">
 
-    <img src="images/p4_img_5.png" class="mask-pic2">
-    <img src="images/p4_img_6.png" class="mask-pic3">
-    <img src="images/p4_img_7.png" class="mask-pic4">
+    <img src="images/p4_img_5.png" class="mask-pic2 opacity ani-fadeIn">
+    <img src="images/p4_img_6.png" class="mask-pic3 opacity ani-fadeIn">
+    <img src="images/p4_img_7.png" class="mask-pic4 opacity ani-fadeIn">
 
-    <img src="images/p4_img_1.png" class="mask-pic5">
-    <img src="images/p4_img_2.png" class="mask-pic6">
-    <img src="images/p4_img_3.png" class="mask-pic7">
+    <img src="images/p4_img_1.png" class="mask-pic5 opacity ani-fadeIn">
+    <img src="images/p4_img_2.png" class="mask-pic6 opacity ani-fadeIn">
+    <img src="images/p4_img_3.png" class="mask-pic7 opacity ani-fadeIn">
 
-    <div class="noChance none">
+    <div class="noChance none opacity ani-fadeIn">
         <img src="images/p5_img_1.png" class="title">
 
         <div class="btnGroup">
@@ -206,7 +212,7 @@
         </div>
     </div>
 
-    <div class="fun none">
+    <div class="fun none opacity ani-fadeIn">
         <img src="images/p4_img_8.png" class="title">
 
         <div class="btnGroup">
@@ -214,7 +220,7 @@
         </div>
     </div>
 
-    <div class="getPrize none">
+    <div class="getPrize none opacity ani-fadeIn">
         <img src="images/p6_img_5.png" class="title">
 
         <div class="btnGroup">
@@ -223,7 +229,7 @@
     </div>
 
 
-    <div class="success none">
+    <div class="success none opacity ani-fadeIn">
         <img src="images/p8_img_1.png" class="title">
 
         <div class="btnGroup">
@@ -260,7 +266,7 @@
             .getPrize .title{width:3.4rem;top:4.35rem;left:50%;margin-left:-1.7rem;}
             .getPrize .btnGroup{position:absolute;width:3rem;left:50%;margin-left:-1.5rem;top:5.7rem;}
 
-         success{}
+         .success{}
             .success .title{width:6.4rem;top:2.35rem;left:50%;margin-left:-3.2rem;}
             .success .btnGroup{position:absolute;width:2.67rem;top:5.5rem;left:50%;margin-left:-1.335rem;}
 
@@ -272,9 +278,11 @@
     </div>
 </div>
 
-<!--<audio id="bgm" src="music.mp3" preload="auto" loop="true" class="iosPreload"></audio>-->
+<audio id="bgm" src="music/music.mp3" preload="auto" loop="true" class="iosPreload"></audio>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<input id="prizeNumber" type="hidden" value="3">
 
 <script>
     var js;
