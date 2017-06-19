@@ -289,6 +289,8 @@
 
         this.haveFill = false;
 
+        this.NeverP1 = true;
+
         this.touch ={
             ScrollObj:undefined,
             isScroll:false,
@@ -325,21 +327,22 @@
         this.prizeNumber = $("#prizeNumber").val();
     };
     main.start = function(){
-        this.bgm.obj.play()
+        $("#video").css({
+            "transform-origin":"0 0 0",
+            "transform":"translate3d("+main.landscape.z.w+"px,0,0) rotateZ(90deg)",
+            "width":window.screen.height+"px",
+            "height":"",
+        });
         Utils.preloadImage(this.ImageList,function(){
-            $(".ori-tip").fi();
-            // if(!main.ios){
+            if(!main.ios){
+                $(".ori-tip").fi();
                 $(".play-btn").fi();
-            // };
-
-            $("#video").css({
-                "transform-origin":"0 0 0",
-                "transform":"translate3d("+main.landscape.z.w+"px,0,0) rotateZ(90deg)",
-                "width":window.screen.height+"px",
-                "height":"",
-            });
-
-            $(window).on("orientationchange",main.oriHandle1);
+            }
+            else{
+                main.loadleave();
+                main.pvideo();
+                main.V.obj.play();
+            }
         },true)
     };
     main.top = function(){
@@ -427,7 +430,7 @@
         $("#video").on({
             play:function(){
                 main.V.isPlay = true;
-                console.log("视频开始播放");
+                $(window).on("orientationchange",main.oriHandle1);
             },
             ended:main.onVideoEnd
         });
@@ -439,22 +442,28 @@
         });
 
         $(".skip").on("touchend",function(){
-            $(".bg-pic1").addClass("none");
-            $(".bg-pic2").removeClass("none");
             main.V.obj.pause();
             main.V.obj.isPlay = false;
             main.V.isEnd = true;
             main.pvideoleave();
-
-            $(window).off("orientationchange",main.oriHandle1);
-            if(window.orientation != 0){
-                $(window).on("orientationchange",main.oriHandle2);
+            $(".bg-pic1").addClass("none");
+            $(".bg-pic2").removeClass("none");
+            if(window.orientation != undefined && window.orientation != 0 ){
+                $(".hp").show();
             }
-            // main.p1();
+            else{
+                setTimeout(function(){
+                    $(".bg-pic2").addClass("blur");
+                },500);
+                $(".bg-pic2").on("webkitTransitionEnd",function(){
+                    main.p1();
+                });
+            }
 
-            $(".bg-pic2").on("webkitTransitionEnd",function(){
-                main.p1();
-            });
+
+
+                $(window).on("orientationchange",main.oriHandle3);
+
         });
 
 
@@ -538,21 +547,22 @@
         main.pvideoleave();
 
         $(window).off("orientationchange",main.oriHandle1);
-        if(window.orientation != 0){
-            $(window).on("orientationchange",main.oriHandle2);
+        $(window).on("orientationchange",main.oriHandle3);
+        if(window.orientation != undefined && window.orientation != 0 ){
+            $(".hp").show();
         }
-        if(window.orientation == 0 || window.orientation == undefined){
+        else{
+            setTimeout(function(){
+                $(".bg-pic2").addClass("blur");
+            },500);
             $(".bg-pic2").on("webkitTransitionEnd",function(){
                 main.p1();
             });
-            $(".bg-pic2").addClass("blur");
         }
+
+
     };
     main.oriHandle1 = function(e){
-        if(main.V.isEnd == true){
-            $(window).off("orientationchange",main.oriHandle1).on("orientationchange",main.oriHandle2)
-            return;
-        };
         if(window.orientation == 0 || window.orientation == 180 ) {//纵向
             $("#video").css({
                 "transform-origin":"0 0 0",
@@ -574,11 +584,6 @@
                 "width":window.screen.width+"px",
                 "height":"",
             });
-            if(main.ios){
-                main.loadleave();
-                main.pvideo();
-                main.V.obj.play();
-            }
             // $(".hp").show();
             $(".skip").removeClass("v");
             $(".skip").css({
@@ -593,6 +598,23 @@
         if(window.orientation == 0 ) {
             $(".bg-pic2").addClass("blur");
             $(window).off("orientationchange",main.oriHandle2);
+        }
+    };
+    main.oriHandle3 = function(){
+        if(main.NeverP1){
+            setTimeout(function(){
+                $(".bg-pic2").addClass("blur");
+            },500);
+            $(".bg-pic2").on("webkitTransitionEnd",function(){
+                main.p1();
+            });
+            main.NeverP1 = false;
+        }
+        if(window.orientation == 0 || window.orientation == 180 ) {
+            $(".hp").hide();
+        }
+        else if(window.orientation == 90 || window.orientation == -90) {
+            $(".hp").show();
         }
     };
     win.main = main;
