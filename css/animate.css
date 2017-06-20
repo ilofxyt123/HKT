@@ -249,6 +249,10 @@
     }
 }
 @keyframes ani-scale {
+    0%{
+        -webkit-transform:scale(0);
+        -webkit-transform-origin:center;
+    }
     100% {
         -webkit-transform:scale(1);
         opacity:1

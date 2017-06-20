@@ -329,9 +329,9 @@
     main.start = function(){
         $("#video").css({
             "transform-origin":"0 0 0",
-            "transform":"translate3d("+main.landscape.z.w+"px,0,0) rotateZ(90deg)",
-            "width":window.screen.height+"px",
-            "height":"",
+            "transform":"translate3d(6.4rem,0,0) rotateZ(90deg)",
+            "width":"11.36rem",
+            "height":"6.4rem",
         });
         Utils.preloadImage(this.ImageList,function(){
             if(!main.ios){
@@ -566,9 +566,9 @@
         if(window.orientation == 0 || window.orientation == 180 ) {//纵向
             $("#video").css({
                 "transform-origin":"0 0 0",
-                "transform":"translate3d("+main.landscape.z.w+"px,0,0) rotateZ(90deg)",
-                "width":window.screen.height+"px",
-                "height":"",
+                "transform":"translate3d(6.4rem,0,0) rotateZ(90deg)",
+                "width":"11.36rem",
+                "height":"6.4rem",
             });
             $(".skip").css({
                 "width":"",
@@ -581,14 +581,15 @@
             $("#video").css({
                 "transform-origin":"",
                 "transform":"",
-                "width":window.screen.width+"px",
-                "height":"",
+                "width":"100%",
+                "height":"6.4rem",
             });
             // $(".hp").show();
+
             $(".skip").removeClass("v");
             $(".skip").css({
-                "width":"0.2025rem",
-                "right":"0.45rem",
+                // "width":"0.2025rem",
+                "right":"0.6rem",
                 "bottom":"-0.1rem",
                 "transform":"rotateZ(-90deg)"
             })

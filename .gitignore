@@ -17,3 +17,4 @@ test/unit/coverage
 test/e2e/reports
 selenium-debug.log
 js/jquery-3.2.1.min.js
+.vscode/settings.json
