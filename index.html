@@ -53,7 +53,7 @@
     <img src="images/p1_img_4.png" class="play-btn none">
 </div>
 <div class="container P_video none">
-    <video src="video/video.mp4" id="video" x-webkit-airplay="true" webkit-playsinline playsinline airplay="allow" x5-video-player-type="h5" class="iosPreload"></video>
+    <video src="video/video.mp4?v1" id="video" x-webkit-airplay="true" webkit-playsinline playsinline airplay="allow" x5-video-player-type="h5" class="iosPreload"></video>
     <img src="images/p2_img_1.png" class="skip v">
 </div>
 <div class="container P1 none">
@@ -64,9 +64,9 @@
 
     <img data-src="images/p3_img_4.png" class="p1-pic1 lazy ani-rotateM">
 
-    <img data-src="images/p3_img_3.png" class="p1-pic2 ani-rotate delay05 lazy animate">
-    <img data-src="images/p3_img_3_1.png" class="p1-pic3 ani-rotate delay10 lazy animate">
-    <img data-src="images/p3_img_3_2.png" class="p1-pic4 ani-rotate delay15 lazy animate">
+    <img data-src="images/p3_img_3.png" class="p1-pic2 ani-float delay05 lazy animate">
+    <img data-src="images/p3_img_3_1.png" class="p1-pic3 ani-float delay10 lazy animate">
+    <img data-src="images/p3_img_3_2.png" class="p1-pic4 ani-float delay15 lazy animate">
 
     <div class="p1-txt">
         <img data-src="images/p3_img_6.png" class="txt lazy">
@@ -77,15 +77,26 @@
     <img data-src="images/p3_img_7.png" class="p1-txt2 lazy">
 </div>
 
+<div class="container P_rule none">
+    <img src="images/p3_img_2.png" class="rule-bg">
+
+    <img src="images/close.png" class="rule-xx">
+    <div class="rule-box">
+        <img src="images/guize.png" class="rule">
+    </div>
+
+</div>
+
+
 <div class="container P_result none">
     <img data-src="images/p6_img_0.png" class="result-bg lazy">
 
     <div class="prize1 none">
-        <img data-src="images/p6_img_1.png" class="title lazy">
+        <img data-src="images/p6_img_1.png" class="title lazy bounceInDown animated">
 
-        <img data-src="images/p4_img_5.png" class="sprite1 delay05 ani-rotate lazy animate">
-        <img data-src="images/p4_img_6.png" class="sprite2 delay10 ani-rotate lazy animate">
-        <img data-src="images/p4_img_7.png" class="sprite3 delay15 ani-rotate lazy animate">
+        <img data-src="images/p4_img_5.png" class="sprite1 delay05 opacity rollInLeft lazy animated">
+        <img data-src="images/p4_img_6.png" class="sprite2 delay10 opacity rollInRight lazy animated">
+        <img data-src="images/p4_img_7.png" class="sprite3 delay15 opacity rollInRight lazy animated">
 
         <div class="prize_decribe">
             <p class="f1">
@@ -106,9 +117,9 @@
 
     </div>
     <div class="prize2 none">
-        <img data-src="images/ticket480.png" class="title title1 none lazy">
-        <img data-src="images/ticket1380.png" class="title title2 none lazy">
-        <img data-src="images/ticket2500.png" class="title title3 none lazy">
+        <img data-src="images/ticket480.png" class="title title1 none lazy bounceInDown animated">
+        <img data-src="images/ticket1380.png" class="title title2 none lazy bounceInDown animated">
+        <img data-src="images/ticket2500.png" class="title title3 none lazy bounceInDown animated">
         <img data-src="images/p4_img_5.png" class="sprite1 delay05 ani-rotate lazy animate">
         <img data-src="images/p4_img_6.png" class="sprite2 delay10 ani-rotate lazy animate">
         <img data-src="images/p4_img_7.png" class="sprite3 delay15 ani-rotate lazy animate">
@@ -186,6 +197,8 @@
 <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 <input id="prizeNumber" type="hidden" value="3">
+<input type="hidden" id="is_get_coupon" value="1" />
+
 
 <script>
     var js;

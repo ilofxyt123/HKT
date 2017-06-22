@@ -277,8 +277,10 @@
             // button:$(".music-btn")
         };
 
-        this.prizeType = undefined;
-        this.ticketType = undefined;
+        this.prizeType = undefined;//中奖类型
+        this.ticketType = undefined;//奖券类型
+        this.needgetPrize = undefined;//有未领取的奖励
+
         this.prizeNumber = 3;
 
         this.haveFill = false;
@@ -318,7 +320,8 @@
         this.touch.limitDown = this.touch.ScrollObj.height() < this.touch.container.height() ? 0 :(this.touch.container.height()-this.touch.ScrollObj.height());
     };
     main.init = function(){
-        this.prizeNumber = $("#prizeNumber").val();
+        this.prizeNumber = parseInt($("#prizeNumber").val());
+        this.needgetPrize = !(parseInt($("#is_get_coupon").val()));
     };
     main.start = function(){
         $("#video").css({
@@ -329,17 +332,27 @@
         });
         Utils.preloadImage(this.ImageList,function(){
             Utils.lazyLoad();
-            if(!main.ios){
-                setTimeout(function(){
-                    $(".ori-tip").fi();
-                    $(".play-btn").fi();
-                },500);
-            }
-            else{
+
+            if(main.needgetPrize){//跳出领奖页面
+                $(".bg-pic1").addClass("none");
+                $(".bg-pic2").removeClass("none").addClass("blur");
+                main.prizeType = 1;
+                main.presult();
+                main.loadleave();
+            }else{
+                if(!main.ios){
+                    setTimeout(function(){
+                        $(".ori-tip").fi();
+                        $(".play-btn").fi();
+                    },500);
+                }
+                else{
                     main.loadleave();
                     main.pvideo();
                     main.V.obj.play();
+                }
             }
+
         },true)
     };
     main.top = function(){
@@ -354,8 +367,15 @@
     main.p1leave = function(){
         $(".P1").fo();
     };
-    main.p2 = function(){};
-    main.p2leave = function(){};
+    main.prule = function(){
+        main.scrollInit(".rule");
+        $(".P_rule").fi();
+    };
+    main.pruleleave = function(){
+        $(".P_rule").fo(function(){
+            $(".rule")[0].style.webkitTransform="translate3d(0,0,0)";
+        });
+    };
     main.p3 = function(){};
     main.p3leave = function(){};
     main.pvideo = function(){
@@ -417,7 +437,39 @@
         document.body.ontouchmove = function(e){
             e.preventDefault();
         };
+        $(".rule-box").on({
+            touchstart:function(e){
+                main.touch.StartY = e.originalEvent.changedTouches[0].pageY;
+            },
+            touchmove:function(e){
+                main.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                main.touch.addY = 1.5*(main.touch.NewY-main.touch.StartY);
+                main.touch.StartY = main.touch.NewY;
+                if(main.touch.scrollY+main.touch.addY<0){
+                    if(main.touch.scrollY+main.touch.addY>main.touch.limitDown){
+                        main.touch.scrollY+=main.touch.addY;
+                    }
+                    else{
+                        main.touch.scrollY = main.touch.limitDown;
+                    }
+                }
+                else{
+                    main.touch.scrollY=0;
+                }
+                main.touch.ScrollObj[0].style.webkitTransform="translate3d(0,"+main.touch.scrollY+"px,0)";
+            },
+            touchend:function(e){
 
+            }
+        });
+        $(".rule-btn").on("touchend",function(){
+           main.prule();
+           main.p1leave();
+        });
+        $(".rule-xx").on("touchend",function(){
+            main.pruleleave();
+            main.p1();
+        });
         $(".play-btn").on("touchend",function(){
             main.loadleave();
             main.pvideo();
