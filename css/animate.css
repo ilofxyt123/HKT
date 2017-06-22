@@ -80,6 +80,11 @@
 .animate.ani-time39{  -webkit-animation-duration:3.9s;  animation-duration:3.9s;  }
 .animate.ani-time40{  -webkit-animation-duration:4s;  animation-duration:4s;  }
 
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
 .animate.ani-pause{
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
@@ -241,13 +246,7 @@
     animation:ani-float 6s linear 0s infinite forwards;
 }
 
-@-webkit-keyframes ani-scale {
 
-    100% {
-        -webkit-transform:scale(1);
-        opacity:1
-    }
-}
 @keyframes ani-scale {
     0%{
         -webkit-transform:scale(0);
@@ -265,3 +264,158 @@
 }
 
 
+@keyframes ani-rotate {
+    0%{
+        -webkit-transform:rotate(0);
+        -webkit-transform-origin:center;
+    }
+    30% {
+        -webkit-transform:rotate(30deg);
+    }
+    60% {
+        -webkit-transform:rotate(0deg);
+    }
+}
+
+.ani-rotate{
+    -webkit-animation:ani-rotate 1s steps(3,end) 0s infinite forwards;
+    animation:ani-rotate 1s steps(3,end) 0s infinite forwards;
+}
+
+
+
+@keyframes ani-rotateM {
+    0%{
+        -webkit-transform:rotateY(0);
+        -webkit-transform-origin:center;
+    }
+    50% {
+        -webkit-transform:rotateY(180deg);
+    }
+    100% {
+        -webkit-transform:rotateY(0deg);
+    }
+}
+
+.ani-rotateM{
+    -webkit-animation:ani-rotateM 1s linear 0s 1 forwards;
+    animation:ani-rotateM 1s linear 0s 1 forwards;
+}
+
+@keyframes ani-flash {
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position:-12.8rem 0;
+    }
+}
+
+@-webkit-keyframes ani-flash {
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position:-12.8rem 0;
+    }
+}
+
+.ani-flash{
+    -webkit-animation-name:ani-flash;
+    -webkit-animation-duration: 0.5s;
+    /*-webkit-animation-timing-function: linear;*/
+    -webkit-animation-timing-function: steps(2,end);
+    /*-webkit-animation-delay: 2s;*/
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+    -webkit-animation-play-state: running;
+
+    animation-name:ani-flash;
+    animation-duration: 0.5s;
+    /*animation-timing-function: linear;*/
+    animation-timing-function: steps(2,end);
+    /*animation-delay: 2s;*/
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-play-state: running;
+    /* Safari and Chrome: */
+}
+
+
+
+@-webkit-keyframes ani-btnToTo {
+    0% {
+        -webkit-transform: scale(1, 1);
+    }
+    7% {
+        -webkit-transform: scale(1.2, 1.2);
+    }
+    14% {
+        -webkit-transform: scale(1, 1);
+    }
+    21% {
+        -webkit-transform: scale(1.2, 1.2);
+    }
+    28% {
+        -webkit-transform: scale(1, 1);
+    }
+    100% {
+        -webkit-transform: scale(1, 1);
+    }
+}
+.ani-btnToTo {
+    animation: ani-btnToTo 1.5s linear infinite normal;
+    -webkit-animation: ani-btnToTo 1.5s linear infinite normal;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes rollInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.rollInLeft {
+    animation-name: rollInLeft;
+}
+
+@keyframes rollInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.rollInRight {
+    animation-name: rollInRight;
+}
+
+@keyframes rotateIn {
+    from {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+
+    to {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.rotateIn {
+    animation-name: rotateIn;
+}

@@ -1,9 +1,7 @@
 /**
  * Created by Administrator on 2017/6/14.
  */
-
 (function(win){
-
     $.fn.extend({
         fiHandler:function(e){
             e.stopPropagation();
@@ -92,13 +90,13 @@
             }
         },//图片列表,图片加载完后回调函数，是否需要显示百分比
             this.lazyLoad = function(){
-                var a = $(".lazy");
+                var a = document.getElementsByClassName("lazy");
                 var len = a.length;
                 var imgObj;
                 var Load = function(){
                     for(var i=0;i<len;i++){
-                        imgObj = a.eq(i);
-                        imgObj.attr("src",imgObj.attr("data-src"));
+                        imgObj = a[i];
+                        imgObj.setAttribute("src",imgObj.getAttribute("data-src"));
                     }
                 };
                 Load();
@@ -131,17 +129,14 @@
             this.g=function(id){
                 return document.getElementById(id);
             },
-            this.E=function(selector,type,handle){
-                $(selector).on(type,handle);
-            }
         this.limitNum=function(obj){//限制11位手机号
-            var value = $(obj).val();
+            var value = obj.value;
             var length = value.length;
             //假设长度限制为10
             if(length>11){
                 //截取前10个字符
                 value = value.substring(0,11);
-                $(obj).val(value);
+                obj.value = value;
             }
         };
     };
@@ -247,7 +242,6 @@
             this.picUrl+"p5_img_5.png",
             this.picUrl+"p6_img_0.png",
             this.picUrl+"p6_img_1.png",
-            this.picUrl+"p6_img_2.png",
             this.picUrl+"p6_img_3.png",
             this.picUrl+"p6_img_4.png",
             this.picUrl+"p6_img_5.png",
@@ -334,14 +328,17 @@
             "height":"6.4rem",
         });
         Utils.preloadImage(this.ImageList,function(){
+            Utils.lazyLoad();
             if(!main.ios){
-                $(".ori-tip").fi();
-                $(".play-btn").fi();
+                setTimeout(function(){
+                    $(".ori-tip").fi();
+                    $(".play-btn").fi();
+                },500);
             }
             else{
-                main.loadleave();
-                main.pvideo();
-                main.V.obj.play();
+                    main.loadleave();
+                    main.pvideo();
+                    main.V.obj.play();
             }
         },true)
     };
@@ -382,8 +379,8 @@
 
 
         setTimeout(function(){//回调
-            // main.prizeType = 1;//fun礼包
-            main.prizeType = 2;//券
+            main.prizeType = 1;//fun礼包
+            // main.prizeType = 2;//券
 
             if(main.prizeType == 2){
                 main.ticketType = 1;//480

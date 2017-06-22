@@ -43,6 +43,7 @@ img{position: absolute;}
 .top{position:absolute;width:100%;height:0.5rem;top:0.05rem;z-index:99;}
     .rule-btn{width:0.95rem;top:0.12rem;right:0.2rem;}
 
+
 .P_bg{z-index:2;}
     .bg-pic{width:6.4rem;}
     .bg-pic2{transition:filter 2s 0.5s}
@@ -85,7 +86,15 @@ img{position: absolute;}
         .prize1 .sprite2{width:1.59rem;left:0.26rem;top:5.74rem;}
         .prize1 .sprite3{width:1.24rem;left:0.26rem;top:0.3rem;}
 
-        .prize1 .txt{width:6.4rem;top:3.7rem;}
+        .prize_decribe{width:3.86rem;height:2.35rem;position:absolute;left:50%;margin-left:-1.93rem;top:4.1rem;display:flex;
+            /*flex-direction: column;*/
+            /*flex-wrap:nowrap;*/
+            flex-flow:column nowrap;
+
+            justify-content:space-between;
+        }
+        .prize_decribe p{font-size:0.26rem;color:#844a12;text-align:center;}
+
         .prize1 .btnGroup{position:absolute;top:7.06rem;width:3rem;left:50%;margin-left:-1.5rem;}
     .prize2{}
         .prize2 .title1{width:4rem;top:1.08rem;left:50%;margin-left:-2rem;}
@@ -107,7 +116,7 @@ img{position: absolute;}
         .submit{width:3rem;left:50%;margin-left:-1.5rem;top:8.3rem;}
 
 .P_mask{background-color:rgba(0,0,0,0.8);z-index:100;}
-        .mask-pic1{width:6.4rem;z-index:-1;}
+        .mask-pic1{width:6.4rem;height:10.4rem;position:absolute;top:0;left:0;z-index:-1;background-image: url("../images/p4_img_0.png");background-repeat: no-repeat;overflow: hidden;background-size: 12.8rem;}
 
         .mask-pic2{width:1.46rem;left:0.25rem;top:2.9rem;z-index:2;}
         .mask-pic3{width:1.59rem;left:0.1rem;top:6.6rem;z-index:2;}

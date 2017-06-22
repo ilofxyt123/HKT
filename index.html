@@ -34,12 +34,10 @@
     </script>
 </head>
 <body>
-<div class="top none">
-    <img src="images/p3_img_5.png" class="rule-btn">
-</div>
+
 <div class="container P_bg">
     <img src="images/p1_img_0.jpg" class="bg-pic bg-pic1">
-    <img src="images/p3_img_1.jpg" class="bg-pic bg-pic2 none">
+    <img data-src="images/p3_img_1.jpg" class="bg-pic bg-pic2 none lazy">
 </div>
 <div class="container P_loading">
     <img src="images/p1_img_3.png" class="load-pic">
@@ -59,104 +57,117 @@
     <img src="images/p2_img_1.png" class="skip v">
 </div>
 <div class="container P1 none">
-    <img src="images/p3_img_2.png" class="p1-kuang">
+    <div class="top">
+        <img data-src="images/p3_img_5.png" class="rule-btn lazy">
+    </div>
+    <img data-src="images/p3_img_2.png" class="p1-kuang lazy">
 
-    <img src="images/p3_img_4.png" class="p1-pic1">
+    <img data-src="images/p3_img_4.png" class="p1-pic1 lazy ani-rotateM">
 
-    <img src="images/p3_img_3.png" class="p1-pic2 ani-float">
-    <img src="images/p3_img_3_1.png" class="p1-pic3 ani-float">
-    <img src="images/p3_img_3_2.png" class="p1-pic4 ani-float">
+    <img data-src="images/p3_img_3.png" class="p1-pic2 ani-rotate delay05 lazy animate">
+    <img data-src="images/p3_img_3_1.png" class="p1-pic3 ani-rotate delay10 lazy animate">
+    <img data-src="images/p3_img_3_2.png" class="p1-pic4 ani-rotate delay15 lazy animate">
 
     <div class="p1-txt">
-        <img src="images/p3_img_6.png" class="txt">
+        <img data-src="images/p3_img_6.png" class="txt lazy">
         <span class="times">3</span>
     </div>
 
-    <img src="images/p3_img_8.png" class="p1-btn">
-    <img src="images/p3_img_7.png" class="p1-txt2">
+    <img data-src="images/p3_img_8.png" class="p1-btn lazy ani-btnToTo">
+    <img data-src="images/p3_img_7.png" class="p1-txt2 lazy">
 </div>
 
 <div class="container P_result none">
-    <img src="images/p6_img_0.png" class="result-bg">
+    <img data-src="images/p6_img_0.png" class="result-bg lazy">
 
     <div class="prize1 none">
-        <img src="images/p6_img_1.png" class="title">
+        <img data-src="images/p6_img_1.png" class="title lazy">
 
-        <img src="images/p4_img_5.png" class="sprite1 ani-float">
-        <img src="images/p4_img_6.png" class="sprite2 ani-float">
-        <img src="images/p4_img_7.png" class="sprite3 ani-float">
+        <img data-src="images/p4_img_5.png" class="sprite1 delay05 ani-rotate lazy animate">
+        <img data-src="images/p4_img_6.png" class="sprite2 delay10 ani-rotate lazy animate">
+        <img data-src="images/p4_img_7.png" class="sprite3 delay15 ani-rotate lazy animate">
 
-        <img src="images/p6_img_2.png" class="txt">
+        <div class="prize_decribe">
+            <p class="f1">
+                Legends of India，全单食品八折优惠，饮品七折优惠
+            </p>
+            <p class="f2">
+                山顶凌霄阁——香港摩天导览维港假期
+            </p>
+            <p class="f3">
+                六折购买山顶三合一套餐
+            </p>
+        </div>
 
         <div class="btnGroup">
-            <img src="images/p6_img_3.png" class="btn btn1">
-            <img src="images/p6_img_4.png" class="btn btn2">
+            <img data-src="images/p6_img_3.png" class="btn btn1 lazy">
+            <img data-src="images/p6_img_4.png" class="btn btn2 lazy">
         </div>
 
     </div>
     <div class="prize2 none">
-        <img src="images/ticket480.png" class="title title1 none">
-        <img src="images/ticket1380.png" class="title title2 none">
-        <img src="images/ticket2500.png" class="title title3 none">
-        <img src="images/p4_img_5.png" class="sprite1 ani-float">
-        <img src="images/p4_img_6.png" class="sprite2 ani-float">
-        <img src="images/p4_img_7.png" class="sprite3 ani-float">
+        <img data-src="images/ticket480.png" class="title title1 none lazy">
+        <img data-src="images/ticket1380.png" class="title title2 none lazy">
+        <img data-src="images/ticket2500.png" class="title title3 none lazy">
+        <img data-src="images/p4_img_5.png" class="sprite1 delay05 ani-rotate lazy animate">
+        <img data-src="images/p4_img_6.png" class="sprite2 delay10 ani-rotate lazy animate">
+        <img data-src="images/p4_img_7.png" class="sprite3 delay15 ani-rotate lazy animate">
 
         <div class="inputBox">
             <input id="phone" class="phone" placeholder="电话">
             <input id="name" class="name" placeholder="姓名">
         </div>
 
-        <img src="images/submitTip.png" class="fill-tip">
-        <img src="images/p7_img_2.png" class="submit">
+        <img data-src="images/submitTip.png" class="fill-tip lazy">
+        <img data-src="images/p7_img_2.png" class="submit lazy">
     </div>
 </div>
 
 
 <div class="container P_mask none">
-    <img src="images/p4_img_0.png" class="mask-pic1 opacity ani-scale">
+    <div class="mask-pic1 ani-flash"></div>
 
-    <img src="images/p4_img_5.png" class="mask-pic2 opacity delay06 ani-fadeIn">
-    <img src="images/p4_img_6.png" class="mask-pic3 opacity delay06 ani-fadeIn">
-    <img src="images/p4_img_7.png" class="mask-pic4 opacity delay06 ani-fadeIn">
-    <img src="images/p4_img_1.png" class="mask-pic5 opacity delay06 ani-fadeIn">
-    <img src="images/p4_img_2.png" class="mask-pic6 opacity delay06 ani-fadeIn">
-    <img src="images/p4_img_3.png" class="mask-pic7 opacity delay06 ani-fadeIn">
+    <img data-src="images/p4_img_5.png" class="mask-pic2 opacity delay06 rotateIn animated lazy">
+    <img data-src="images/p4_img_6.png" class="mask-pic3 opacity delay06 rollInLeft animated lazy">
+    <img data-src="images/p4_img_7.png" class="mask-pic4 opacity delay06 rollInRight animated lazy">
+    <img data-src="images/p4_img_1.png" class="mask-pic5 opacity delay06 rollInLeft animated lazy">
+    <img data-src="images/p4_img_2.png" class="mask-pic6 opacity delay06 rotateIn animated  lazy">
+    <img data-src="images/p4_img_3.png" class="mask-pic7 opacity delay06 rollInRight animated lazy">
 
     <div class="noChance none opacity ani-fadeIn">
-        <img src="images/p5_img_1.png" class="title opacity ani-fadeIn delay10">
+        <img data-src="images/p5_img_1.png" class="title opacity ani-fadeIn delay10 lazy">
 
         <div class="btnGroup">
-            <img src="images/p5_img_3.png" class="btn btn1 opacity ani-fadeIn delay10">
-            <img src="images/p5_img_4.png" class="btn btn2 opacity ani-fadeIn delay10">
-            <img src="images/p5_img_5.png" class="btn btn3 opacity ani-fadeIn delay10">
+            <img data-src="images/p5_img_3.png" class="btn btn1 opacity ani-fadeIn delay10 lazy">
+            <img data-src="images/p5_img_4.png" class="btn btn2 opacity ani-fadeIn delay10 lazy">
+            <img data-src="images/p5_img_5.png" class="btn btn3 opacity ani-fadeIn delay10 lazy">
         </div>
     </div>
 
     <div class="fun none opacity ani-fadeIn">
-        <img src="images/p4_img_8.png" class="title opacity ani-fadeIn delay10">
+        <img data-src="images/p4_img_8.png" class="title opacity ani-fadeIn delay10 lazy">
 
         <div class="btnGroup">
-            <img src="images/p4_img_9.png" class="btn btn1 opacity ani-fadeIn delay10">
+            <img data-src="images/p4_img_9.png" class="btn btn1 opacity ani-fadeIn delay10 lazy">
         </div>
     </div>
 
     <div class="getPrize none opacity ani-fadeIn">
-        <img src="images/p6_img_5.png" class="title opacity ani-fadeIn delay10">
+        <img data-src="images/p6_img_5.png" class="title opacity ani-fadeIn delay10 lazy">
 
         <div class="btnGroup">
-            <img src="images/p6_img_6.png" class="btn btn1 opacity ani-fadeIn delay10">
+            <img data-src="images/p6_img_6.png" class="btn btn1 opacity ani-fadeIn delay10 lazy">
         </div>
     </div>
 
 
     <div class="success none">
-        <img src="images/p8_img_1.png" class="title opacity ani-fadeIn delay10">
+        <img data-src="images/p8_img_1.png" class="title opacity ani-fadeIn delay10 lazy">
 
         <div class="btnGroup">
-            <img src="images/p8_img_2.png" class="btn btn1 opacity ani-fadeIn delay10">
-            <img src="images/p5_img_4.png" class="btn btn2 opacity ani-fadeIn delay10">
-            <img src="images/p5_img_5.png" class="btn btn3 opacity ani-fadeIn delay10">
+            <img data-src="images/p8_img_2.png" class="btn btn1 opacity ani-fadeIn delay10 lazy">
+            <img data-src="images/p5_img_4.png" class="btn btn2 opacity ani-fadeIn delay10 lazy">
+            <img data-src="images/p5_img_5.png" class="btn btn3 opacity ani-fadeIn delay10 lazy">
         </div>
     </div>
 
