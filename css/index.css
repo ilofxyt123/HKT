@@ -80,7 +80,7 @@ img{position: absolute;}
 .P_rule{}
     .rule-bg{z-index:-1;width:6.4rem;left:0;top:0;}
     .rule-xx{width:0.43rem;height:0.43rem;right:0.6rem;top:0.9rem;}
-    .rule-box{width:4.5rem;height:6.3rem;position:absolute;left:50%;margin-left:-2.25rem;top:2rem;overflow: hidden;}
+    .rule-box{width:4.5rem;height:6.5rem;position:absolute;left:50%;margin-left:-2.25rem;top:2rem;overflow: hidden;}
         .rule{position: relative;top:0;margin:0 auto;width:4.55rem;height:71.66rem;}
 
 
@@ -93,14 +93,14 @@ img{position: absolute;}
         .prize1 .sprite2{width:1.59rem;left:0.26rem;top:6.44rem;}
         .prize1 .sprite3{width:1.24rem;left:0.26rem;top:0.3rem;}
 
-        .prize_decribe{width:3.86rem;height:2.35rem;position:absolute;left:50%;margin-left:-1.93rem;top:4.1rem;display:flex;
+        .prize_decribe{width:3.86rem;max-height:2.35rem;position:absolute;left:50%;margin-left:-1.93rem;top:4.1rem;display:flex;
             /*flex-direction: column;*/
             /*flex-wrap:nowrap;*/
             flex-flow:column nowrap;
 
             justify-content:space-between;
         }
-        .prize_decribe p{font-size:0.26rem;color:#844a12;text-align:center;}
+        .prize_decribe p{font-size:0.26rem;color:#844a12;text-align:center;margin-bottom:0.2rem;}
 
         .prize1 .btnGroup{position:absolute;top:7.06rem;width:3rem;left:50%;margin-left:-1.5rem;}
     .prize2{}
@@ -115,9 +115,9 @@ img{position: absolute;}
         .inputBox{position:absolute;top:5.5rem;width:4.66rem;height:1.8rem;left:50%;margin-left:-2.33rem;}
             .inputBox input.name{top:0;}
             .inputBox input.phone{bottom:0;}
-            .inputBox input{color:black;text-align: center;font-size:0.26rem;position: absolute;width:100%;height:0.8rem;line-height:0.8rem;background-image:url("../images/inputbg.png");background-repeat: no-repeat;background-color:rgba(0,0,0,0);background-size:100%;border:none;outline:none;font-weight:bold;}
-            .inputBox input::placeholder{color:black;text-align: center;font-size:0.26rem;}
-            .inputBox input::-webkit-input-placeholder{color:black;text-align: center;font-size:0.26rem;}
+            .inputBox input{color:black;text-align: center;font-size:0.26rem;position: absolute;width:100%;height:0.8rem;background-image:url("../images/inputbg.png");background-repeat: no-repeat;background-color:rgba(0,0,0,0);background-size:100%;border:none;outline:none;font-weight:bold;padding:0.25rem 0;}
+            .inputBox input::placeholder{color:black;text-align: center;font-size:0.26rem;padding:0.25rem 0;}
+            .inputBox input::-webkit-input-placeholder{color:black;text-align: center;font-size:0.26rem;padding:0.25rem 0;}
 
         .fill-tip{width:3.52rem;left:50%;margin-left:-1.76rem;top:7.56rem;}
         .submit{width:3rem;left:50%;margin-left:-1.5rem;top:8.3rem;}
@@ -143,8 +143,9 @@ img{position: absolute;}
             .fun .btnGroup{position:absolute;width:4.16rem;left:50%;margin-left:-2.08rem;top:5.3rem;}
 
         .getPrize{}
-            .getPrize .title{width:3.4rem;top:4.35rem;left:50%;margin-left:-1.7rem;}
-            .getPrize .btnGroup{position:absolute;width:3rem;left:50%;margin-left:-1.5rem;top:5.7rem;}
+            .getPrize .title{width:6.4rem;top:4.35rem;left:0;}
+            .getPrize .btnGroup{position:absolute;width:4.16rem;left:50%;margin-left:-2.08rem;top:5.7rem;}
+
 
          .success{}
             .success .title{width:6.4rem;top:2.35rem;left:50%;margin-left:-3.2rem;}

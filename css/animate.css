@@ -295,8 +295,8 @@
 }
 
 .ani-rotateM{
-    -webkit-animation:ani-rotateM 1s linear 0s 1 forwards;
-    animation:ani-rotateM 1s linear 0s 1 forwards;
+    -webkit-animation:ani-rotateM 0.6s linear 0s 1 forwards;
+    animation:ani-rotateM 0.6s linear 0s 1 forwards;
 }
 
 @keyframes ani-flash {

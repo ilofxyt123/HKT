@@ -216,7 +216,6 @@
             this.picUrl+"p1_img_4.png",
             this.picUrl+"p2_img_1.png",
             this.picUrl+"p3_img_1.jpg",
-            this.picUrl+"p3_img_1_1.jpg",
             this.picUrl+"p3_img_2.jpg",
             this.picUrl+"p3_img_2.png",
             this.picUrl+"p3_img_3.png",
@@ -344,7 +343,7 @@
                     setTimeout(function(){
                         $(".ori-tip").fi();
                         $(".play-btn").fi();
-                    },500);
+                    },800);
                 }
                 else{
                     main.loadleave();
@@ -517,16 +516,18 @@
 
 
 
-
+        var url_fun = "http://mp.weixin.qq.com/s/pJzFodraujCdDwbcRkI4lg";
+        var music_day = "http://mp.weixin.qq.com/s/OBg0Ezq0TAsveoY3Lchvzg";
         ////////noChance////////
         $(".noChance .btn1").on("touchend",function(){
-
+            $(".P_mask").addClass("none");
+            $(".noChance").addClass("none");
         });
-        $(".noChance .btn2").on("touchend",function(){
-
+        $(".noChance .btn2").on("touchend",function(){//fun外链
+            window.location.href = url_fun;
         });
-        $(".noChance .btn3").on("touchend",function(){
-
+        $(".noChance .btn3").on("touchend",function(){//音乐节外链
+            window.location.href = music_day;
         });
         ////////noChance////////
 
@@ -539,19 +540,27 @@
         ////////success////////
         $(".success .btn1").on("touchend",function(){
 
-            $(".P_mask").addClass("none");
-            $(".success").addClass("none");
+            if(main.prizeNumber == 0){
+                $(".success").addClass("none");
+                $(".noChance .btn1").remove();
+                $(".noChance").removeClass("none");
+            }
+            else{
+                $(".P_mask").addClass("none");
+                $(".success").addClass("none");
 
-            $(".P_result").addClass("none");
-            $(".prize2").addClass("none");
-            $(".prize2 .title").addClass("none");
+                $(".P_result").addClass("none");
+                $(".prize2").addClass("none");
+                $(".prize2 .title").addClass("none");
 
 
-            var clearInput = function(){
-                $("#name,#phone").val("");
-            };
-            clearInput();
-            main.p1();
+                var clearInput = function(){
+                    $("#name,#phone").val("");
+                };
+                clearInput();
+                main.p1();
+            }
+
         });
         $(".success .btn2").on("touchend",function(){});
         $(".success .btn3").on("touchend",function(){});
@@ -581,8 +590,13 @@
 
         });//领取大礼包
         $(".prize1 .btn2").on("touchend",function(){
-            $(".getPrize").removeClass("none");
-            main.pmask();
+            if(main.prizeNumber == 0 ){
+                $(".noChance").removeClass("none");
+                $(".P_mask").fi();
+            }else{
+                $(".getPrize").removeClass("none");
+                main.pmask();
+            }
         });//再玩一次
         ////////prize1礼包////////
 
